@@ -2,7 +2,7 @@
 
 # Clone repository
 
-$ git clone <ssh link>
+$ git clone `<ssh link>`
 
 # Go inside the folder
 
