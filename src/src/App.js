@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { makeStyles } from "@material-ui/core/styles";
+import Nav from "./components/Nav";
+import Dashboard from "./components/Dashboard";
+import Footer from "./components/Footer";
+import Grid from "@material-ui/core/Grid";
+const useStyles = makeStyles({
+  root: {},
+});
 
 function App() {
+  const classes = useStyles();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={classes.root}>
+      <div className="row">
+        <div className="column1">
+          <Nav />
+        </div>
+        <div className="column2">
+          <Dashboard />
+        </div>
+        <div className="column3">
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 }
