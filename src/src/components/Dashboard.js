@@ -1,5 +1,8 @@
 import "../index.css";
+import { Player } from "video-react";
 import img from "../image.svg";
+import { useState } from "react";
+import Dialog from "@material-ui/core/Dialog";
 import flg from "../cc.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -65,8 +68,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Dashboard = () => {
+  const [open, setOpen] = useState(false);
   const classes = useStyles();
-
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const openVideoThatCourse = () => {
+    setOpen(true);
+  };
   return (
     <div className={classes.dashboard}>
       <div className={classes.root}>
@@ -99,9 +108,28 @@ const Dashboard = () => {
                 <CircularProgressWithLabel />
               </Grid>
               <Grid item xs={6} sm={3} className={classes.col3card2}>
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={openVideoThatCourse}
+                >
                   Continue
                 </Button>
+                <Dialog
+                  onClose={handleClose}
+                  open={open}
+                  className={classes.dialog}
+                  fullScreen
+                >
+                  <div>
+                    <Player>
+                      <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+                    </Player>
+                  </div>
+                  <Button onClick={handleClose} color="primary">
+                    Close
+                  </Button>
+                </Dialog>
               </Grid>
             </Grid>
           </Grid>
